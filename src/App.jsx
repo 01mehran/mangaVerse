@@ -1,7 +1,7 @@
 function App() {
   return (
-    <h1 className="text-3xl font-bold text-center mt-10">
-      <mark className="px-3">MangaVerse</mark>
+    <h1 className="mt-10 text-center text-3xl font-bold transition-all">
+      <mark className="px-3 text-blue-500">MangaVerse</mark>
     </h1>
   );
 }
