@@ -12,7 +12,7 @@ export default function Header() {
         </article>
 
         {/* Search (desktop) */}
-        <article className="hidden w-72 items-center rounded-full bg-white/5 px-3 py-2 md:flex">
+        <article className="hidden w-94 items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400 md:flex">
           <Search size={18} className="text-gray-400" />
           <input
             type="text"
@@ -36,7 +36,7 @@ export default function Header() {
 
       {/* Mobile Search */}
       <div className="px-4 pb-3 md:hidden">
-        <article className="flex items-center rounded-full bg-white/5 px-3 py-2">
+        <article className="flex items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400">
           <Search size={18} className="text-gray-400" />
           <input
             type="text"
