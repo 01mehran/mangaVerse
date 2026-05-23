@@ -4,7 +4,7 @@ import { Search, User, Menu } from "lucide-react";
 export default function Header() {
   return (
     <header className="w-full border-b border-white/10 text-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 2xl:max-w-400">
         {/* Logo */}
         <article className="text-xl font-bold tracking-wide">
           <span className="text-white">manga</span>
