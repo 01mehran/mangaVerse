@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import MangasList from "./components/MangasList";
 import MangaCard from "./components/MangaCard";
+import Footer from "./components/Footer";
 
 function App() {
   const [mangas, setMangas] = useState([]);
@@ -32,6 +33,7 @@ function App() {
     <section>
       <Header />
       <MangasList mangas={mangas} />
+      <Footer />
     </section>
   );
 }
