@@ -9,19 +9,30 @@ import Header from "./components/Header";
 import MangasList from "./components/MangasList";
 import MangaCard from "./components/MangaCard";
 import Footer from "./components/Footer";
+import Container from "./components/Container";
+import Spinner from "./components/Spinner";
+import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
   const [mangas, setMangas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // https://api.jikan.moe/v4/top/manga
 
   // Fetch Mangas;
   const fetchMangas = async () => {
     try {
+      setIsLoading(true);
+      setError(null);
+
       const res = await axios.get(`http://localhost:3000/manga`);
       setMangas(res.data);
     } catch (err) {
+      setError(err.message);
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -32,7 +43,14 @@ function App() {
   return (
     <section>
       <Header />
-      <MangasList mangas={mangas} />
+      <main className="min-h-screen">
+        <Container>
+          {isLoading && <Spinner />}
+          {error && <ErrorMessage error={error} />}
+
+          {!isLoading && !error && <MangasList mangas={mangas} />}
+        </Container>
+      </main>
       <Footer />
     </section>
   );
