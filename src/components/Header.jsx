@@ -4,7 +4,7 @@ import { Search, User, Menu } from "lucide-react";
 export default function Header() {
   return (
     <header className="w-full border-b border-white/10 text-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 2xl:max-w-400">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4 2xl:max-w-400">
         {/* Logo */}
         <article className="text-xl font-bold tracking-wide">
           <span className="text-white">manga</span>
@@ -12,7 +12,7 @@ export default function Header() {
         </article>
 
         {/* Search (desktop) */}
-        <article className="hidden w-94 items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400 md:flex">
+        <article className="hidden w-120 items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400 md:flex lg:w-150">
           <Search size={18} className="text-gray-400" />
           <input
             type="text"
@@ -35,7 +35,7 @@ export default function Header() {
       </div>
 
       {/* Mobile Search */}
-      <div className="px-4 pb-3 md:hidden">
+      <div className="container mx-auto px-4 pb-3 md:hidden 2xl:max-w-400">
         <article className="flex items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400">
           <Search size={18} className="text-gray-400" />
           <input
