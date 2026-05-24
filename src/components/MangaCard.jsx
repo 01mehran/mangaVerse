@@ -1,9 +1,12 @@
+// React-router-dom;
+import { Link } from "react-router-dom";
+
 // Static image;
 import mangaImage from "../assets/manga.jfif";
 
 export default function MangaCard({ manga }) {
   return (
-    <section>
+    <Link to={`/manga/${manga.id}`}>
       <div className="group cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-xl">
         {/* Image */}
         <div className="relative overflow-hidden">
@@ -38,6 +41,6 @@ export default function MangaCard({ manga }) {
           <span className="text-sm text-gray-400">{manga.status}</span>
         </div>
       </div>
-    </section>
+    </Link>
   );
 }
