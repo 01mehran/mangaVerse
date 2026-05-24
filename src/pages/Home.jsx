@@ -26,8 +26,8 @@ export default function Home() {
       setIsLoading(true);
       setError(null);
 
-      const res = await axios.get(`http://localhost:3000/manga`);
-      setMangas(res.data);
+      const { data } = await axios.get(`http://localhost:3000/manga`);
+      setMangas(data);
     } catch (err) {
       setError(err.message);
       console.error(err);
