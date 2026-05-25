@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-gray-800 bg-gray-950">
       <Container>
         <div className="py-10">
-          <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+          <div className="flex flex-col items-center justify-around gap-8 lg:flex-row">
             {/* Logo & text */}
             <div className="text-center lg:text-left">
               <article className="flex items-center justify-center text-xl font-bold tracking-wide lg:justify-start">
@@ -19,21 +19,6 @@ export default function Footer() {
                 stories.
               </p>
             </div>
-
-            {/* Navigation */}
-            <nav className="flex items-center gap-6 text-sm text-gray-400">
-              <a href="#" className="transition hover:text-purple-400">
-                Home
-              </a>
-
-              <a href="#" className="transition hover:text-purple-400">
-                Top Manga
-              </a>
-
-              <a href="#" className="transition hover:text-purple-400">
-                Search
-              </a>
-            </nav>
 
             <div className="text-sm text-gray-500">
               “Read. Explore. Become legendary.”
