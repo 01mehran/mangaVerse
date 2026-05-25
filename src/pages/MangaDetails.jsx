@@ -53,13 +53,11 @@ export default function MangaDetails() {
 
   return (
     <section className="min-h-screen bg-gray-950 text-white">
-      <Header />
-
       <Container>
         {isLoading && <Spinner />}
         {error && <ErrorMessage error={error} />}
 
-        <main className="min-h-screen">
+        <main className="min-h-screen pb-16">
           {!isLoading && !error && (
             <div className="px-4 py-8">
               {/* Back button */}
@@ -156,8 +154,6 @@ export default function MangaDetails() {
           )}
         </main>
       </Container>
-
-      <Footer />
     </section>
   );
 }

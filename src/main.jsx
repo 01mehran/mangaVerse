@@ -1,13 +1,25 @@
+// React;
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
+
+// React-router-dom
 import { BrowserRouter } from "react-router-dom";
+
+// Context;
+import { FetchMangasProvider } from "./contexts/FetchMangasContext.jsx";
+
+// Global Css;
+import "./index.css";
+
+// Pages
+import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <FetchMangasProvider>
+        <App />
+      </FetchMangasProvider>
     </BrowserRouter>
   </StrictMode>,
 );

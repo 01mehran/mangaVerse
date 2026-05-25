@@ -2,10 +2,13 @@
 import axios from "axios";
 
 // React Hooks;
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // React-router-dom;
 import { useNavigate } from "react-router-dom";
+
+// Context;
+import { FetchMangasContext } from "../contexts/FetchMangasContext";
 
 // Components;
 import Header from "../components/Header";
@@ -17,59 +20,18 @@ import Spinner from "../components/Spinner";
 import ErrorMessage from "../components/ErrorMessage";
 
 export default function Home() {
-  const [mangas, setMangas] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
-
-  // https://api.jikan.moe/v4/top/manga
-
-  // Fetch Mangas;
-  const fetchMangas = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const { data } = await axios.get(`http://localhost:3000/manga`);
-      setMangas(data);
-    } catch (err) {
-      setError(err.message);
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchMangas();
-  }, []);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
-    }
-  };
+  const { isLoading, error } = useContext(FetchMangasContext);
 
   return (
     <section>
-      <Header
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        handleSearch={handleSearch}
-      />
-      <main className="min-h-screen">
+      <main className="min-h-screen pb-16">
         <Container>
           {isLoading && <Spinner />}
           {error && <ErrorMessage error={error} />}
 
-          {!isLoading && !error && <MangasList mangas={mangas} />}
+          {!isLoading && !error && <MangasList />}
         </Container>
       </main>
-      <Footer />
     </section>
   );
 }

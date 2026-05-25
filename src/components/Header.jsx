@@ -1,10 +1,17 @@
+// Context;
+import { useContext } from "react";
+
 // Components;
+import { FetchMangasContext } from "../contexts/FetchMangasContext";
 import Container from "./Container";
 
 // Icons;
 import { Search, User, Menu } from "lucide-react";
 
-export default function Header({ searchQuery, setSearchQuery, handleSearch }) {
+export default function Header() {
+  const { searchQuery, setSearchQuery, handleSearch } =
+    useContext(FetchMangasContext);
+
   return (
     <header className="w-full border-b border-white/10 text-white">
       <Container>

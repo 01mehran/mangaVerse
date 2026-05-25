@@ -1,8 +1,12 @@
 // Components;
+import { useContext } from "react";
 import Container from "./Container";
 import MangaCard from "./MangaCard";
+import { FetchMangasContext } from "../contexts/FetchMangasContext";
 
-export default function MangasList({ mangas }) {
+export default function MangasList() {
+  const { mangas } = useContext(FetchMangasContext);
+
   return (
     <Container>
       <div className="py-8">

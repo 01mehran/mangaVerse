@@ -52,8 +52,6 @@ export default function SearchResult() {
 
   return (
     <section className="min-h-screen bg-gray-950">
-      {/* <Header /> */}
-
       <Container>
         {/* Back button */}
         <button
@@ -63,7 +61,7 @@ export default function SearchResult() {
           <MoveLeft size={36} />
         </button>
 
-        <main className="min-h-screen">
+        <main className="min-h-screen pb-16">
           {/* Search title */}
           <h1 className="mb-4 text-xl font-bold text-white md:text-2xl">
             Search results for:
@@ -93,8 +91,6 @@ export default function SearchResult() {
           )}
         </main>
       </Container>
-
-      <Footer />
     </section>
   );
 }
