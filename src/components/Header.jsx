@@ -4,7 +4,7 @@ import Container from "./Container";
 // Icons;
 import { Search, User, Menu } from "lucide-react";
 
-export default function Header() {
+export default function Header({ searchQuery, setSearchQuery, handleSearch }) {
   return (
     <header className="w-full border-b border-white/10 text-white">
       <Container>
@@ -16,14 +16,19 @@ export default function Header() {
           </article>
 
           {/* Search (desktop) */}
-          <article className="hidden w-120 items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400 md:flex lg:w-150">
+          <form
+            onSubmit={handleSearch}
+            className="hidden w-120 items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400 md:flex lg:w-150"
+          >
             <Search size={18} className="text-gray-400" />
             <input
               type="text"
               placeholder="Search manga..."
               className="w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </article>
+          </form>
 
           {/* Right Icons */}
           <article className="flex items-center gap-4">
@@ -42,14 +47,19 @@ export default function Header() {
       {/* Mobile Search */}
       <Container>
         <div className="pb-3 md:hidden">
-          <article className="flex items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400">
+          <form
+            onSubmit={handleSearch}
+            className="flex items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400"
+          >
             <Search size={18} className="text-gray-400" />
             <input
               type="text"
               placeholder="Search manga..."
               className="w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </article>
+          </form>
         </div>
       </Container>
     </header>

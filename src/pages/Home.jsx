@@ -4,6 +4,9 @@ import axios from "axios";
 // React Hooks;
 import { useEffect, useState } from "react";
 
+// React-router-dom;
+import { useNavigate } from "react-router-dom";
+
 // Components;
 import Header from "../components/Header";
 import MangasList from "../components/MangasList";
@@ -17,6 +20,9 @@ export default function Home() {
   const [mangas, setMangas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   // https://api.jikan.moe/v4/top/manga
 
@@ -40,9 +46,21 @@ export default function Home() {
     fetchMangas();
   }, []);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <section>
-      <Header />
+      <Header
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        handleSearch={handleSearch}
+      />
       <main className="min-h-screen">
         <Container>
           {isLoading && <Spinner />}
