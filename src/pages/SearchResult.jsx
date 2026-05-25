@@ -1,5 +1,5 @@
 // React Hooks;
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // React-router-dom;
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -7,45 +7,30 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 // Libraries;
 import axios from "axios";
 
+// Context;
+import { FetchMangasContext } from "../contexts/FetchMangasContext";
+
 // Components;
 import Header from "../components/Header";
 import Container from "../components/Container";
 import MangaCard from "../components/MangaCard";
 import Footer from "../components/Footer";
+import Spinner from "../components/Spinner";
 
 // Icons;
 import { MoveLeft } from "lucide-react";
-import Spinner from "../components/Spinner";
 
 export default function SearchResult() {
-  const [mangas, setMangas] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // Get mangas, loading, state, and error from context;
+  const { mangas, isLoading, error } = useContext(FetchMangasContext);
 
+  // Get the search query from the URL parameters;
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
 
   const navigate = useNavigate();
 
-  const fetchMangas = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const { data } = await axios.get("http://localhost:3000/manga");
-
-      setMangas(data);
-    } catch (err) {
-      setError("Failed to fetch mangas");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchMangas();
-  }, []);
-
+  // Filter mangas based on the search query;
   const filteredMangas = mangas.filter((manga) =>
     manga.title.toLowerCase().includes(query.toLowerCase()),
   );
