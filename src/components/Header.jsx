@@ -1,5 +1,8 @@
+// React-router-dom;
+import { useLocation, useNavigate } from "react-router-dom";
+
 // Context;
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Components;
 import { FetchMangasContext } from "../contexts/FetchMangasContext";
@@ -9,8 +12,22 @@ import Container from "./Container";
 import { Search, User, Menu } from "lucide-react";
 
 export default function Header() {
-  const { searchQuery, setSearchQuery, handleSearch } =
-    useContext(FetchMangasContext);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setSearchQuery("");
+  }, [location.pathname]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
 
   return (
     <header className="w-full border-b border-white/10 text-white">
