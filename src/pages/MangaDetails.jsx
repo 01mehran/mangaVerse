@@ -9,8 +9,6 @@ import axios from "axios";
 
 // Components;
 import Container from "../components/Container";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Spinner from "../components/Spinner";
 import ErrorMessage from "../components/ErrorMessage";
 
@@ -76,6 +74,7 @@ export default function MangaDetails() {
                     src={img}
                     alt={`Cover of ${mangaDetail.title}`}
                     className="h-full w-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 

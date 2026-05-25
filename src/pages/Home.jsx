@@ -11,10 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { FetchMangasContext } from "../contexts/FetchMangasContext";
 
 // Components;
-import Header from "../components/Header";
 import MangasList from "../components/MangasList";
 import MangaCard from "../components/MangaCard";
-import Footer from "../components/Footer";
 import Container from "../components/Container";
 import Spinner from "../components/Spinner";
 import ErrorMessage from "../components/ErrorMessage";

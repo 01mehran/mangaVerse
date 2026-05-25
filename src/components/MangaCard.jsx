@@ -14,6 +14,7 @@ export default function MangaCard({ manga }) {
             src={mangaImage}
             alt={manga.title}
             className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
           />
 
           {/* Score badge */}

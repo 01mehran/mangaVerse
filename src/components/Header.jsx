@@ -13,6 +13,7 @@ import { Search, User, Menu } from "lucide-react";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { isLoading } = useContext(FetchMangasContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,6 +24,8 @@ export default function Header() {
 
   const handleSearch = (e) => {
     e.preventDefault();
+
+    if (isLoading) return;
 
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
@@ -51,6 +54,7 @@ export default function Header() {
               className="w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              disabled={isLoading}
             />
           </form>
 

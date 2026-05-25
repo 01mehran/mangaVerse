@@ -11,10 +11,8 @@ import axios from "axios";
 import { FetchMangasContext } from "../contexts/FetchMangasContext";
 
 // Components;
-import Header from "../components/Header";
 import Container from "../components/Container";
 import MangaCard from "../components/MangaCard";
-import Footer from "../components/Footer";
 import Spinner from "../components/Spinner";
 
 // Icons;
