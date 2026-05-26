@@ -26,6 +26,7 @@ export const FetchMangasProvider = ({ children }) => {
       setMangas(data);
     } catch (err) {
       console.error(err);
+      setError(err.message);
     } finally {
       setIsLoading(false);
     }

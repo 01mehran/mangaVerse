@@ -1,8 +1,12 @@
-// Components;
+// Context;
+import { FetchMangasContext } from "../contexts/FetchMangasContext";
+
+// React Hooks;
 import { useContext } from "react";
+
+// Components;
 import Container from "./Container";
 import MangaCard from "./MangaCard";
-import { FetchMangasContext } from "../contexts/FetchMangasContext";
 
 export default function MangasList() {
   const { mangas } = useContext(FetchMangasContext);

@@ -1,15 +1,20 @@
 // React-router-dom;
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // Context;
+import { FetchMangasContext } from "../contexts/FetchMangasContext";
+
+// React Hooks;
 import { useContext, useEffect, useState } from "react";
 
 // Components;
-import { FetchMangasContext } from "../contexts/FetchMangasContext";
 import Container from "./Container";
 
 // Icons;
-import { Search, User, Menu } from "lucide-react";
+import { Search, User, Menu, BookOpen } from "lucide-react";
+
+// Logo;
+import logo from "../assets/logo.png";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +35,8 @@ export default function Header() {
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
     }
+
+    setSearchQuery("");
   };
 
   return (
@@ -37,10 +44,12 @@ export default function Header() {
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <article className="text-xl font-bold tracking-wide">
-            <span className="text-white">manga</span>
-            <span className="text-purple-500">Verse</span>
-          </article>
+          <Link to="/">
+            <article className="text-xl font-bold tracking-wide">
+              <span className="text-white">manga</span>
+              <span className="text-purple-500">Verse</span>
+            </article>
+          </Link>
 
           {/* Search (desktop) */}
           <form
@@ -60,14 +69,13 @@ export default function Header() {
 
           {/* Right Icons */}
           <article className="flex items-center gap-4">
-            <button className="transition hover:text-purple-400">
-              <User size={20} />
-            </button>
-
-            {/* Mobile menu */}
-            <button className="transition hover:text-purple-400 md:hidden">
-              <Menu size={22} />
-            </button>
+            <div className="w-14">
+              <img
+                src={logo}
+                alt={`manga logo`}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </article>
         </div>
       </Container>
