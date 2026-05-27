@@ -19,7 +19,7 @@ export default function MangasList() {
         </h1>
 
         {/* Manga Cards*/}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 px-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {[...mangas]
             .sort((a, b) => b.score - a.score)
             .slice(0, 12)

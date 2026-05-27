@@ -14,7 +14,7 @@ export default function Footer() {
                 <span className="text-purple-500">Verse</span>
               </article>
 
-              <p className="mt-3 max-w-sm text-gray-400">
+              <p className="mt-3 max-w-sm text-sm text-gray-400 sm:text-lg">
                 Discover your next favorite manga and <br /> explore legendary
                 stories.
               </p>
