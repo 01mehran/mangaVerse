@@ -111,14 +111,14 @@ export default function MangaDetails() {
                   <div className="mt-10 grid grid-cols-2 gap-4">
                     <div className="rounded-2xl border border-gray-800 bg-gray-900 p-5">
                       <p className="text-sm text-gray-400">Author</p>
-                      <h3 className="mt-1 text-lg font-semibold">
+                      <h3 className="text-md mt-1 font-semibold">
                         {mangaDetail.author}
                       </h3>
                     </div>
 
                     <div className="rounded-2xl border border-gray-800 bg-gray-900 p-5">
                       <p className="text-sm text-gray-400">Status</p>
-                      <h3 className="mt-1 text-lg font-semibold">
+                      <h3 className="text-md mt-1 font-semibold">
                         {mangaDetail.status}
                       </h3>
                     </div>
