@@ -1,7 +1,3 @@
 export default function Container({ children }) {
-  return (
-    <section className="container mx-auto px-4 2xl:max-w-400">
-      {children}
-    </section>
-  );
+  return <section className="px-4 sm:px-8 xl:px-18">{children}</section>;
 }

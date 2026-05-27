@@ -17,6 +17,7 @@ import Spinner from "../components/Spinner";
 
 // Icons;
 import { MoveLeft } from "lucide-react";
+import ErrorMessage from "../components/ErrorMessage";
 
 export default function SearchResult() {
   // Get mangas, loading, state, and error from context;
@@ -34,28 +35,22 @@ export default function SearchResult() {
   );
 
   return (
-    <section className="min-h-screen bg-gray-950">
-      <Container>
+    <Container>
+      <section className="min-h-screen bg-gray-950 py-12">
         {/* Back button */}
         <button
           onClick={() => navigate(-1)}
-          className="mt-10 mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
+          className="mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
         >
           <MoveLeft size={36} />
         </button>
 
-        <main className="min-h-screen pb-16">
-          {/* Search title */}
-          <h1 className="mb-4 text-xl font-bold text-white md:text-2xl">
-            Search results for:
-            <span className="ml-3 text-purple-400">"{query}"</span>
-          </h1>
-
+        <main className="min-h-screen">
           {/* Loading */}
           {isLoading && <Spinner />}
 
           {/* Error */}
-          {error && <p className="py-20 text-center text-red-500">{error}</p>}
+          {error && <ErrorMessage error={error} />}
 
           {/* Empty state */}
           {!isLoading && !error && filteredMangas.length === 0 && (
@@ -66,14 +61,22 @@ export default function SearchResult() {
 
           {/* Results */}
           {!isLoading && !error && filteredMangas.length > 0 && (
-            <div className="grid grid-cols-1 gap-6 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {filteredMangas.map((manga) => (
-                <MangaCard manga={manga} key={manga.id} />
-              ))}
-            </div>
+            <>
+              {/* Search title */}
+              <h1 className="mb-4 text-xl font-bold text-white md:text-2xl">
+                Search results for:
+                <span className="ml-3 text-purple-400">"{query}"</span>
+              </h1>
+
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {filteredMangas.map((manga) => (
+                  <MangaCard manga={manga} key={manga.id} />
+                ))}
+              </div>
+            </>
           )}
         </main>
-      </Container>
-    </section>
+      </section>
+    </Container>
   );
 }

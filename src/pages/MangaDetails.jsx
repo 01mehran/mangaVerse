@@ -49,22 +49,22 @@ export default function MangaDetails() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-gray-950 text-white">
-      <Container>
+    <Container>
+      <section className="min-h-screen bg-gray-950 py-12 text-white">
+        {/* Back button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
+        >
+          <MoveLeft size={36} />
+        </button>
+
         {isLoading && <Spinner />}
         {error && <ErrorMessage error={error} />}
 
-        <main className="min-h-screen pb-16">
+        <main className="min-h-screen">
           {!isLoading && !error && (
-            <div className="px-4 py-8">
-              {/* Back button */}
-              <button
-                onClick={() => navigate(-1)}
-                className="mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
-              >
-                <MoveLeft size={36} />
-              </button>
-
+            <div className="">
               {/* Top section */}
               <section className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
                 {/* Cover */}
@@ -151,7 +151,7 @@ export default function MangaDetails() {
             </div>
           )}
         </main>
-      </Container>
-    </section>
+      </section>
+    </Container>
   );
 }

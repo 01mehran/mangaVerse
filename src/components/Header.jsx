@@ -40,7 +40,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full border-b border-white/10 text-white">
+    <header className="w-full border-b border-white/10 text-white bg-black">
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}

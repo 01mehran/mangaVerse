@@ -22,13 +22,13 @@ export default function Home() {
 
   return (
     <section>
-      <main className="min-h-screen pb-16">
-        <Container>
-          {isLoading && <Spinner />}
-          {error && <ErrorMessage error={error} />}
+      <main className="min-h-screen">
+        {/* <Container> */}
+        {isLoading && <Spinner />}
+        {error && <ErrorMessage error={error} />}
 
-          {!isLoading && !error && <MangasList />}
-        </Container>
+        {!isLoading && !error && <MangasList />}
+        {/* </Container> */}
       </main>
     </section>
   );
