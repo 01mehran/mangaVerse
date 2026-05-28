@@ -14,3 +14,21 @@ body {
   font-family: var(--font-poppins);
   min-height: 100dvh;
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e2939;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7032a1;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b36cf;
+}
