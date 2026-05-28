@@ -16,6 +16,10 @@ import MangaDetails from "./pages/MangaDetails";
 import ErrorMessage from "./components/ErrorMessage";
 import Spinner from "./components/Spinner";
 
+// Services;
+import { mangasListLoader } from "./services/mangasList.loader";
+import { mangaDetailLoader } from "./services/mangaDetail.loader";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,11 +29,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: async () => {
-          const { data } = await axios.get("http://localhost:3000/manga");
-
-          return data;
-        },
+        loader: mangasListLoader,
 
         element: <Home />,
         errorElement: <ErrorMessage />,
@@ -37,11 +37,7 @@ const router = createBrowserRouter([
 
       {
         path: "/search",
-        loader: async () => {
-          const { data } = await axios.get("http://localhost:3000/manga");
-
-          return data;
-        },
+        loader: mangasListLoader,
 
         element: <SearchResult />,
         errorElement: <ErrorMessage />,
@@ -49,13 +45,7 @@ const router = createBrowserRouter([
 
       {
         path: "/manga/:id",
-        loader: async ({ params }) => {
-          const { data } = await axios.get(
-            `http://localhost:3000/manga/${params.id}`,
-          );
-
-          return data;
-        },
+        loader: mangaDetailLoader,
 
         element: <MangaDetails />,
         errorElement: <ErrorMessage />,
