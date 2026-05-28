@@ -58,7 +58,9 @@ export default function Header() {
             onSubmit={handleSearch}
             className="hidden w-120 items-center rounded-full bg-white/5 px-3 py-3 transition duration-300 focus-within:ring-1 focus-within:ring-purple-400 md:flex lg:w-150"
           >
-            <Search size={18} className="text-gray-400" />
+            <button className="transition-scale cursor-pointer duration-300 hover:scale-105">
+              <Search size={18} className="text-gray-400" />
+            </button>
             <input
               type="text"
               placeholder="Search manga..."
