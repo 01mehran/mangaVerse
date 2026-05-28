@@ -1,34 +1,20 @@
-// Libraries;
-import axios from "axios";
-
-// React Hooks;
-import { useContext, useEffect, useState } from "react";
-
 // React-router-dom;
-import { useNavigate } from "react-router-dom";
-
-// Context;
-import { FetchMangasContext } from "../contexts/FetchMangasContext";
+import { useLoaderData, useNavigation } from "react-router-dom";
 
 // Components;
 import MangasList from "../components/MangasList";
-import MangaCard from "../components/MangaCard";
-import Container from "../components/Container";
 import Spinner from "../components/Spinner";
-import ErrorMessage from "../components/ErrorMessage";
 
 export default function Home() {
-  const { isLoading, error } = useContext(FetchMangasContext);
+  const mangas = useLoaderData();
+  const navigation = useNavigation();
+
+  const isLoading = navigation.state === "loading";
 
   return (
     <section>
       <main className="min-h-screen">
-        {/* <Container> */}
-        {isLoading && <Spinner />}
-        {error && <ErrorMessage error={error} />}
-
-        {!isLoading && !error && <MangasList />}
-        {/* </Container> */}
+        {isLoading ? <Spinner /> : <MangasList mangas={mangas} />}
       </main>
     </section>
   );

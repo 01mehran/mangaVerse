@@ -1,27 +1,69 @@
 // React-router-dom;
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// Libraries;
+import axios from "axios";
+
+// Layout
+import MainLayout from "./layouts/MainLayout";
 
 // Pages;
 import Home from "./pages/Home";
-import MangaDetails from "./pages/MangaDetails";
 import SearchResult from "./pages/SearchResult";
+import MangaDetails from "./pages/MangaDetails";
 
 // Components;
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ErrorMessage from "./components/ErrorMessage";
+import Spinner from "./components/Spinner";
 
-function App() {
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/manga/:id" element={<MangaDetails />} />
-        <Route path="/search" element={<SearchResult />} />
-      </Routes>
-      <Footer />
-    </>
-  );
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    HydrateFallback: Spinner,
+
+    children: [
+      {
+        index: true,
+        loader: async () => {
+          const { data } = await axios.get("http://localhost:3000/manga");
+
+          return data;
+        },
+
+        element: <Home />,
+        errorElement: <ErrorMessage />,
+      },
+
+      {
+        path: "/search",
+        loader: async () => {
+          const { data } = await axios.get("http://localhost:3000/manga");
+
+          return data;
+        },
+
+        element: <SearchResult />,
+        errorElement: <ErrorMessage />,
+      },
+
+      {
+        path: "/manga/:id",
+        loader: async ({ params }) => {
+          const { data } = await axios.get(
+            `http://localhost:3000/manga/${params.id}`,
+          );
+
+          return data;
+        },
+
+        element: <MangaDetails />,
+        errorElement: <ErrorMessage />,
+      },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;

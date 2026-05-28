@@ -1,16 +1,8 @@
-// Context;
-import { FetchMangasContext } from "../contexts/FetchMangasContext";
-
-// React Hooks;
-import { useContext } from "react";
-
 // Components;
 import Container from "./Container";
 import MangaCard from "./MangaCard";
 
-export default function MangasList() {
-  const { mangas } = useContext(FetchMangasContext);
-
+export default function MangasList({ mangas }) {
   return (
     <Container>
       <div className="py-12">

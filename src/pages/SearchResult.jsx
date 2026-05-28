@@ -1,14 +1,10 @@
-// React Hooks;
-import { useContext, useEffect, useState } from "react";
-
 // React-router-dom;
-import { useNavigate, useSearchParams } from "react-router-dom";
-
-// Libraries;
-import axios from "axios";
-
-// Context;
-import { FetchMangasContext } from "../contexts/FetchMangasContext";
+import {
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+  useSearchParams,
+} from "react-router-dom";
 
 // Components;
 import Container from "../components/Container";
@@ -17,11 +13,11 @@ import Spinner from "../components/Spinner";
 
 // Icons;
 import { MoveLeft } from "lucide-react";
-import ErrorMessage from "../components/ErrorMessage";
 
 export default function SearchResult() {
-  // Get mangas, loading, state, and error from context;
-  const { mangas, isLoading, error } = useContext(FetchMangasContext);
+  const mangas = useLoaderData();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
 
   // Get the search query from the URL parameters;
   const [searchParams] = useSearchParams();
@@ -49,18 +45,18 @@ export default function SearchResult() {
           {/* Loading */}
           {isLoading && <Spinner />}
 
-          {/* Error */}
-          {error && <ErrorMessage error={error} />}
-
           {/* Empty state */}
-          {!isLoading && !error && filteredMangas.length === 0 && (
-            <p className="py-20 text-center text-xl text-red-500">
-              No manga found
-            </p>
+          {!isLoading && filteredMangas.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <span className="mb-3 text-5xl">⚠️</span>
+              <h2 className="text-xl font-semibold text-white">
+                Ooops, no manga found
+              </h2>
+            </div>
           )}
 
           {/* Results */}
-          {!isLoading && !error && filteredMangas.length > 0 && (
+          {!isLoading && filteredMangas.length > 0 && (
             <>
               {/* Search title */}
               <h1 className="mb-4 text-xl font-bold text-white md:text-2xl">

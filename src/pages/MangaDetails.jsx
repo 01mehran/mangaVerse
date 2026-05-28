@@ -1,16 +1,12 @@
 // React-router-dom
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
 
 // React Hooks;
-import { useEffect, useState } from "react";
-
-// Libraries;
-import axios from "axios";
+import { useEffect } from "react";
 
 // Components;
 import Container from "../components/Container";
 import Spinner from "../components/Spinner";
-import ErrorMessage from "../components/ErrorMessage";
 
 // Static image;
 import img from "../assets/manga.jfif";
@@ -19,31 +15,13 @@ import img from "../assets/manga.jfif";
 import { MoveLeft } from "lucide-react";
 
 export default function MangaDetails() {
-  const [mangaDetail, setMangaDetail] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   const navigate = useNavigate();
-  const { id } = useParams();
 
-  const getMangaDetails = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const { data } = await axios.get(`http://localhost:3000/manga/${id}`);
-      setMangaDetail(data);
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const mangaDetail = useLoaderData();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
 
   useEffect(() => {
-    getMangaDetails();
-
     // Move scroll to top when component mounts;
     window.scrollTo(0, 0);
   }, []);
@@ -59,11 +37,11 @@ export default function MangaDetails() {
           <MoveLeft size={36} />
         </button>
 
-        {isLoading && <Spinner />}
-        {error && <ErrorMessage error={error} />}
-
-        <main className="min-h-screen">
-          {!isLoading && !error && (
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <main className="min-h-screen">
+            {/* {!isLoading && ( */}
             <div className="">
               {/* Top section */}
               <section className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
@@ -149,8 +127,8 @@ export default function MangaDetails() {
                 </p>
               </section>
             </div>
-          )}
-        </main>
+          </main>
+        )}
       </section>
     </Container>
   );

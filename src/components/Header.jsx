@@ -1,24 +1,28 @@
 // React-router-dom;
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-// Context;
-import { FetchMangasContext } from "../contexts/FetchMangasContext";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 
 // React Hooks;
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components;
 import Container from "./Container";
 
 // Icons;
-import { Search, User, Menu, BookOpen } from "lucide-react";
+import { Search } from "lucide-react";
 
 // Logo;
 import logo from "../assets/logo.png";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
-  const { isLoading } = useContext(FetchMangasContext);
+
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,8 +34,6 @@ export default function Header() {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    if (isLoading) return;
-
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
     }
@@ -40,7 +42,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full border-b border-white/10 text-white bg-black">
+    <header className="w-full border-b border-white/10 bg-black text-white">
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
@@ -60,7 +62,7 @@ export default function Header() {
             <input
               type="text"
               placeholder="Search manga..."
-              className="w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none"
+              className={`${isLoading && "pointer-events-none opacity-80"} w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               disabled={isLoading}
@@ -91,9 +93,10 @@ export default function Header() {
             <input
               type="text"
               placeholder="Search manga..."
-              className="w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none"
+              className={` ${isLoading && "pointer-events-none opacity-80"} w-full bg-transparent px-2 text-sm text-white placeholder-gray-500 outline-none`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              disabled={isLoading}
             />
           </form>
         </div>
