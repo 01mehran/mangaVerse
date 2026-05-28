@@ -11,6 +11,7 @@ import BackButton from "../components/BackButton";
 
 // Static image;
 import img from "../assets/manga.jfif";
+import InfoBox from "../components/InfoBox";
 
 export default function MangaDetails() {
   const mangaDetail = useLoaderData();
@@ -78,33 +79,10 @@ export default function MangaDetails() {
 
                   {/* Info cards */}
                   <div className="mt-10 grid grid-cols-2 gap-4">
-                    <div className="rounded-2xl border border-gray-800 bg-gray-900 p-5">
-                      <p className="text-sm text-gray-400">Author</p>
-                      <h3 className="text-md mt-1 font-semibold">
-                        {mangaDetail.author}
-                      </h3>
-                    </div>
-
-                    <div className="rounded-2xl border border-gray-800 bg-gray-900 p-5">
-                      <p className="text-sm text-gray-400">Status</p>
-                      <h3 className="text-md mt-1 font-semibold">
-                        {mangaDetail.status}
-                      </h3>
-                    </div>
-
-                    <div className="rounded-2xl border border-gray-800 bg-gray-900 p-5">
-                      <p className="text-sm text-gray-400">Chapters</p>
-                      <h3 className="mt-1 text-lg font-semibold">
-                        {mangaDetail.chapters}
-                      </h3>
-                    </div>
-
-                    <div className="rounded-2xl border border-gray-800 bg-gray-900 p-5">
-                      <p className="text-sm text-gray-400">Year</p>
-                      <h3 className="mt-1 text-lg font-semibold">
-                        {mangaDetail.year}
-                      </h3>
-                    </div>
+                    <InfoBox title="Author" value={mangaDetail.author} />
+                    <InfoBox title="Status" value={mangaDetail.status} />
+                    <InfoBox title="Chapters" value={mangaDetail.chapters} />
+                    <InfoBox title="Year" value={mangaDetail.year} />
                   </div>
                 </div>
               </section>
