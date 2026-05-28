@@ -1,5 +1,5 @@
 // React-router-dom
-import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 
 // React Hooks;
 import { useEffect } from "react";
@@ -7,16 +7,12 @@ import { useEffect } from "react";
 // Components;
 import Container from "../components/Container";
 import Spinner from "../components/Spinner";
+import BackButton from "../components/BackButton";
 
 // Static image;
 import img from "../assets/manga.jfif";
 
-// Icons;
-import { MoveLeft } from "lucide-react";
-
 export default function MangaDetails() {
-  const navigate = useNavigate();
-
   const mangaDetail = useLoaderData();
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -30,12 +26,7 @@ export default function MangaDetails() {
     <Container>
       <section className="min-h-screen bg-gray-950 py-12 text-white">
         {/* Back button */}
-        <button
-          onClick={() => navigate(-1)}
-          className="mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
-        >
-          <MoveLeft size={36} />
-        </button>
+        <BackButton />
 
         {isLoading ? (
           <Spinner />

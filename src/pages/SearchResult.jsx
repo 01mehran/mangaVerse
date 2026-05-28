@@ -1,7 +1,6 @@
 // React-router-dom;
 import {
   useLoaderData,
-  useNavigate,
   useNavigation,
   useSearchParams,
 } from "react-router-dom";
@@ -10,9 +9,7 @@ import {
 import Container from "../components/Container";
 import MangaCard from "../components/MangaCard";
 import Spinner from "../components/Spinner";
-
-// Icons;
-import { MoveLeft } from "lucide-react";
+import BackButton from "../components/BackButton";
 
 export default function SearchResult() {
   const mangas = useLoaderData();
@@ -23,8 +20,6 @@ export default function SearchResult() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
 
-  const navigate = useNavigate();
-
   // Filter mangas based on the search query;
   const filteredMangas = mangas.filter((manga) =>
     manga.title.toLowerCase().includes(query.toLowerCase()),
@@ -34,12 +29,7 @@ export default function SearchResult() {
     <Container>
       <section className="min-h-screen bg-gray-950 py-12">
         {/* Back button */}
-        <button
-          onClick={() => navigate(-1)}
-          className="mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
-        >
-          <MoveLeft size={36} />
-        </button>
+        <BackButton />
 
         <main className="min-h-screen">
           {/* Loading */}
