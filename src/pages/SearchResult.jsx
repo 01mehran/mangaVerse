@@ -26,7 +26,7 @@ export default function SearchResult() {
   );
 
   return (
-    <section className="min-h-screen bg-slate-100 py-12 transition-colors duration-300 dark:bg-gray-950">
+    <section className="min-h-screen bg-slate-100 py-12 dark:bg-gray-950">
       <Container>
         {/* Back button */}
         <BackButton />

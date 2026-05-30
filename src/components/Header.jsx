@@ -47,7 +47,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 text-slate-900 backdrop-blur-lg transition-colors duration-300 dark:border-white/10 dark:bg-gray-950/95 dark:text-white">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 text-slate-900 backdrop-blur-lg dark:border-white/10 dark:bg-gray-950/95 dark:text-white">
       <Container>
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -63,7 +63,7 @@ export default function Header() {
           {/* Search (desktop) */}
           <form
             onSubmit={handleSearch}
-            className="hidden w-110 items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-3 transition duration-300 focus-within:ring-2 focus-within:ring-indigo-500 md:flex lg:w-150 dark:border-white/10 dark:bg-white/5 dark:focus-within:ring-purple-400"
+            className="hidden w-110 items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500 md:flex lg:w-150 dark:border-white/10 dark:bg-white/5 dark:focus-within:ring-purple-400"
           >
             <button className="cursor-pointer transition duration-300 hover:scale-105">
               <Search size={18} className="text-slate-500 dark:text-gray-400" />
@@ -107,7 +107,7 @@ export default function Header() {
         <div className="pt-3 md:hidden">
           <form
             onSubmit={handleSearch}
-            className="flex items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-3 transition duration-300 focus-within:ring-2 focus-within:ring-indigo-500 dark:border-white/10 dark:bg-white/5 dark:focus-within:ring-purple-400"
+            className="flex items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500 dark:border-white/10 dark:bg-white/5 dark:focus-within:ring-purple-400"
           >
             <Search size={18} className="text-slate-500 dark:text-gray-400" />
 

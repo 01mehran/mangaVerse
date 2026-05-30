@@ -7,13 +7,13 @@ import mangaImage from "../assets/manga.jfif";
 export default function MangaCard({ manga }) {
   return (
     <Link to={`/manga/${manga.id}`}>
-      <div className="group shadow-card hover:shadow-card-hover cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:scale-[1.03] dark:border-white/10 dark:bg-gray-900">
+      <div className="group shadow-card hover:shadow-card-hover cursor-pointer overflow-hidden rounded-2xl border border-slate-200 transition-transform duration-300 ease-out hover:scale-[1.03] dark:border-white/10 dark:bg-gray-900">
         {/* Image */}
         <div className="relative overflow-hidden">
           <img
             src={mangaImage}
             alt={`Cover of ${manga.title}`}
-            className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="h-72 w-full object-cover transition-transform group-hover:scale-110"
             loading="lazy"
           />
 
@@ -26,7 +26,7 @@ export default function MangaCard({ manga }) {
         {/* Content */}
         <div className="space-y-2 p-4">
           {/* Title */}
-          <h3 className="truncate text-lg font-bold text-slate-900 transition group-hover:text-indigo-600 dark:text-white dark:group-hover:text-purple-400">
+          <h3 className="truncate text-lg font-bold text-slate-900 group-hover:text-indigo-600 dark:text-white dark:group-hover:text-purple-400">
             {manga.title}
           </h3>
 

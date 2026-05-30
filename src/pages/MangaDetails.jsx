@@ -24,7 +24,7 @@ export default function MangaDetails() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-slate-100 py-12 text-slate-900 transition-colors duration-300 dark:bg-gray-950 dark:text-white">
+    <section className="min-h-screen bg-slate-100 py-12 text-slate-900 dark:bg-gray-950 dark:text-white">
       <Container>
         <BackButton />
 

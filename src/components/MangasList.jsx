@@ -6,7 +6,7 @@ export default function MangasList({ mangas }) {
   return (
     <Container>
       <div className="py-12">
-        <h1 className="text-md mb-2 py-2 font-medium transition-colors duration-300 dark:bg-gray-950 dark:text-white">
+        <h1 className="text-md mb-2 py-2 font-medium dark:bg-gray-950 dark:text-white">
           Top Manga by score{" "}
         </h1>
 
