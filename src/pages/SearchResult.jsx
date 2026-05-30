@@ -39,7 +39,7 @@ export default function SearchResult() {
           {!isLoading && filteredMangas.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <span className="mb-3 text-5xl">⚠️</span>
-              <h2 className="text-xl font-semibold text-indigo-500 dark:text-white">
+              <h2 className="text-xl font-medium text-red-400">
                 Ooops, no manga found
               </h2>
             </div>
