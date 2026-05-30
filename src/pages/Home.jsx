@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <section>
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-slate-100 transition-colors duration-300 dark:bg-gray-950">
         {isLoading ? <Spinner /> : <MangasList mangas={mangas} />}
       </main>
     </section>
