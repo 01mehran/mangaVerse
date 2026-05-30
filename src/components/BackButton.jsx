@@ -10,7 +10,7 @@ export default function BackButton() {
   return (
     <button
       onClick={() => navigate(-1)}
-      className="mb-8 cursor-pointer text-gray-400 transition hover:-translate-x-px hover:text-purple-400"
+      className="mb-8 cursor-pointer text-indigo-400 transition hover:-translate-x-px hover:text-indigo-500 dark:text-gray-400 dark:hover:text-purple-600"
     >
       <MoveLeft size={36} />
     </button>
