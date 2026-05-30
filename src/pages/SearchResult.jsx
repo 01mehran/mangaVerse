@@ -26,8 +26,8 @@ export default function SearchResult() {
   );
 
   return (
-    <Container>
-      <section className="min-h-screen bg-gray-950 py-12">
+    <section className="min-h-screen bg-slate-100 py-12 transition-colors duration-300 dark:bg-gray-950">
+      <Container>
         {/* Back button */}
         <BackButton />
 
@@ -39,7 +39,7 @@ export default function SearchResult() {
           {!isLoading && filteredMangas.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <span className="mb-3 text-5xl">⚠️</span>
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="text-xl font-semibold text-indigo-500 dark:text-white">
                 Ooops, no manga found
               </h2>
             </div>
@@ -49,9 +49,11 @@ export default function SearchResult() {
           {!isLoading && filteredMangas.length > 0 && (
             <>
               {/* Search title */}
-              <h1 className="mb-4 text-xl font-bold text-white md:text-2xl">
+              <h1 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
                 Search results for:
-                <span className="ml-3 text-purple-400">"{query}"</span>
+                <span className="ml-3 text-indigo-600 dark:text-purple-400">
+                  "{query}"
+                </span>
               </h1>
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -62,7 +64,7 @@ export default function SearchResult() {
             </>
           )}
         </main>
-      </section>
-    </Container>
+      </Container>
+    </section>
   );
 }
