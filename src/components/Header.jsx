@@ -7,7 +7,10 @@ import {
 } from "react-router-dom";
 
 // React Hooks;
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+//Contexts;
+import { useTheme } from "../contexts/ThemContext";
 
 // Components;
 import Container from "./Container";
@@ -20,6 +23,8 @@ import logo from "../assets/logo.png";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+
+  const { handleToggleTheme } = useTheme();
 
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -86,9 +91,12 @@ export default function Header() {
             </div>
 
             {/* Dark Mode Button */}
-            <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-slate-100 transition duration-300 hover:scale-105 hover:bg-indigo-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10">
-              <Moon size={18} className="hidden dark:block" />
-              <Sun size={18} className="block dark:hidden" />
+            <button
+              onClick={handleToggleTheme}
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-slate-100 transition duration-300 hover:scale-105 hover:bg-indigo-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+            >
+              <Moon size={18} className="block dark:hidden" />
+              <Sun size={18} className="hidden dark:block" />
             </button>
           </article>
         </div>

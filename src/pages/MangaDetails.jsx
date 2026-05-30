@@ -8,10 +8,10 @@ import { useEffect } from "react";
 import Container from "../components/Container";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
+import InfoBox from "../components/InfoBox";
 
 // Static image;
 import img from "../assets/manga.jfif";
-import InfoBox from "../components/InfoBox";
 
 export default function MangaDetails() {
   const mangaDetail = useLoaderData();
@@ -24,21 +24,19 @@ export default function MangaDetails() {
   }, []);
 
   return (
-    <Container>
-      <section className="min-h-screen bg-gray-950 py-12 text-white">
-        {/* Back button */}
+    <section className="min-h-screen bg-slate-100 py-12 text-slate-900 transition-colors duration-300 dark:bg-gray-950 dark:text-white">
+      <Container>
         <BackButton />
 
         {isLoading ? (
           <Spinner />
         ) : (
           <main className="min-h-screen">
-            {/* {!isLoading && ( */}
-            <div className="">
+            <div>
               {/* Top section */}
               <section className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
                 {/* Cover */}
-                <div className="h-115 overflow-hidden rounded-3xl border border-gray-800 shadow-2xl">
+                <div className="h-115 overflow-hidden rounded-3xl border border-slate-200 shadow-xl dark:border-white/10 dark:shadow-2xl">
                   <img
                     src={img}
                     alt={`Cover of ${mangaDetail.title}`}
@@ -56,11 +54,11 @@ export default function MangaDetails() {
 
                   {/* Score */}
                   <div className="mt-5 flex items-center gap-4">
-                    <div className="rounded-xl bg-yellow-400/10 px-4 py-2 text-lg font-medium text-yellow-300">
+                    <div className="rounded-xl bg-yellow-100 px-4 py-2 text-lg font-medium text-yellow-700 dark:bg-yellow-400/10 dark:text-yellow-300">
                       ⭐ {mangaDetail.score}
                     </div>
 
-                    <div className="rounded-xl bg-purple-500/10 px-4 py-2 text-lg font-medium text-purple-300">
+                    <div className="rounded-xl bg-yellow-100 px-4 py-2 text-lg font-medium text-yellow-700 dark:bg-purple-500/10 dark:text-purple-300">
                       #{mangaDetail.rank}
                     </div>
                   </div>
@@ -70,7 +68,7 @@ export default function MangaDetails() {
                     {mangaDetail.genres?.map((genre, i) => (
                       <span
                         key={i}
-                        className="rounded-full bg-purple-500/20 px-4 py-2 text-sm text-purple-300"
+                        className="rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 dark:bg-purple-500/20 dark:text-purple-300"
                       >
                         {genre}
                       </span>
@@ -88,17 +86,17 @@ export default function MangaDetails() {
               </section>
 
               {/* Synopsis */}
-              <section className="mt-16 rounded-3xl border border-gray-800 bg-gray-900 p-8">
+              <section className="mt-16 rounded-3xl border border-slate-200 bg-indigo-50 p-8 shadow-sm dark:border-white/10 dark:bg-gray-900">
                 <h2 className="mb-5 text-2xl font-bold">Synopsis</h2>
 
-                <p className="leading-8 text-gray-300">
+                <p className="leading-8 text-slate-600 dark:text-gray-300">
                   {mangaDetail.synopsis}
                 </p>
               </section>
             </div>
           </main>
         )}
-      </section>
-    </Container>
+      </Container>
+    </section>
   );
 }
