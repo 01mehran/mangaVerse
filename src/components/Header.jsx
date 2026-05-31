@@ -93,7 +93,7 @@ export default function Header() {
             {/* Dark Mode Button */}
             <button
               onClick={handleToggleTheme}
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-slate-100 transition duration-300 hover:scale-105 hover:bg-indigo-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-slate-100 hover:scale-105 hover:bg-indigo-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
             >
               <Moon size={18} className="block dark:hidden" />
               <Sun size={18} className="hidden dark:block" />

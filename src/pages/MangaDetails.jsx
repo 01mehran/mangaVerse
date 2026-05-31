@@ -10,9 +10,6 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import InfoBox from "../components/InfoBox";
 
-// Static image;
-import img from "../assets/manga.jfif";
-
 export default function MangaDetails() {
   const mangaDetail = useLoaderData();
   const navigation = useNavigation();
@@ -38,7 +35,7 @@ export default function MangaDetails() {
                 {/* Cover */}
                 <div className="h-115 overflow-hidden rounded-3xl border border-slate-200 shadow-xl dark:border-white/10 dark:shadow-2xl">
                   <img
-                    src={img}
+                    src={mangaDetail.images.jpg.image_url}
                     alt={`Cover of ${mangaDetail.title}`}
                     className="h-full w-full object-cover"
                     loading="lazy"
@@ -65,19 +62,22 @@ export default function MangaDetails() {
 
                   {/* Genres */}
                   <div className="mt-8 flex flex-wrap gap-3">
-                    {mangaDetail.genres?.map((genre, i) => (
+                    {mangaDetail.genres?.map((genre) => (
                       <span
-                        key={i}
+                        key={genre.mal_id}
                         className="rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 dark:bg-purple-500/20 dark:text-purple-300"
                       >
-                        {genre}
+                        {genre.name}
                       </span>
                     ))}
                   </div>
 
                   {/* Info cards */}
                   <div className="mt-10 grid grid-cols-2 gap-4">
-                    <InfoBox title="Author" value={mangaDetail.author} />
+                    <InfoBox
+                      title="Author"
+                      value={mangaDetail.authors?.map((a) => a.name).join(", ")}
+                    />
                     <InfoBox title="Status" value={mangaDetail.status} />
                     <InfoBox title="Chapters" value={mangaDetail.chapters} />
                     <InfoBox title="Year" value={mangaDetail.year} />

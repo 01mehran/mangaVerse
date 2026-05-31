@@ -58,7 +58,7 @@ export default function SearchResult() {
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {filteredMangas.map((manga) => (
-                  <MangaCard manga={manga} key={manga.id} />
+                  <MangaCard manga={manga} key={manga.mal_id} />
                 ))}
               </div>
             </>
