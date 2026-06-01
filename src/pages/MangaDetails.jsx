@@ -28,71 +28,128 @@ export default function MangaDetails() {
         {isLoading ? (
           <Spinner />
         ) : (
-          <main className="min-h-screen">
-            <div>
-              {/* Top section */}
-              <section className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
-                {/* Cover */}
-                <div className="h-115 overflow-hidden rounded-3xl border border-slate-200 shadow-xl dark:border-white/10 dark:shadow-2xl">
+          <main className="min-h-screen py-10 ">
+            <div className="mx-auto max-w-6xl">
+              {/* TOP SECTION */}
+              <section className="grid grid-cols-1 gap-10 md:grid-cols-[320px_1fr]">
+                {/* COVER */}
+                <div className="aspect-3/4 w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl transition hover:scale-[1.02] md:sticky md:top-34 dark:border-white/10 dark:shadow-2xl">
                   <img
-                    src={mangaDetail.images.jpg.image_url}
-                    alt={`Cover of ${mangaDetail.title}`}
+                    src={mangaDetail?.images?.jpg?.image_url}
+                    alt={`Cover of ${mangaDetail?.title}`}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                 </div>
 
-                {/* Details */}
-                <div>
-                  {/* Title */}
-                  <h1 className="text-4xl leading-tight font-bold md:text-5xl">
-                    {mangaDetail.title}
-                  </h1>
+                {/* DETAILS */}
+                <div className="flex flex-col gap-6">
+                  {/* TITLE */}
+                  <div>
+                    <h1 className="sm:4xl text-2xl font-bold md:text-5xl">
+                      {mangaDetail?.title}
+                    </h1>
 
-                  {/* Score */}
-                  <div className="mt-5 flex items-center gap-4">
-                    <div className="rounded-xl bg-yellow-100 px-4 py-2 text-lg font-medium text-yellow-700 dark:bg-yellow-400/10 dark:text-yellow-300">
-                      ⭐ {mangaDetail.score}
+                    <p className="mt-2 text-lg text-slate-500 sm:text-2xl dark:text-gray-400">
+                      {mangaDetail?.title_japanese}
+                    </p>
+                  </div>
+
+                  {/* SCORE + STATS */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="rounded-xl bg-yellow-100 px-4 py-2 font-semibold text-yellow-700 dark:bg-yellow-400/10 dark:text-yellow-300">
+                      ⭐ {mangaDetail?.score?.toFixed(2)}
                     </div>
 
-                    <div className="rounded-xl bg-yellow-100 px-4 py-2 text-lg font-medium text-yellow-700 dark:bg-purple-500/10 dark:text-purple-300">
-                      #{mangaDetail.rank}
+                    <div className="rounded-xl bg-purple-100 px-4 py-2 font-semibold text-purple-700 dark:bg-purple-500/10 dark:text-purple-300">
+                      Rank #{mangaDetail?.rank}
+                    </div>
+
+                    <div className="rounded-xl bg-orange-500/10 px-4 py-2 text-sm font-semibold text-orange-400/90 dark:bg-orange-500/20">
+                      Popularity #{mangaDetail?.popularity}
+                    </div>
+
+                    <div className="rounded-xl bg-green-500/20 px-4 py-2 text-sm font-semibold text-slate-600 dark:bg-green-500/20 dark:text-white/80">
+                      Favorites {mangaDetail?.favorites}
                     </div>
                   </div>
 
-                  {/* Genres */}
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {mangaDetail.genres?.map((genre) => (
+                  {/* BADGES */}
+                  <div className="flex flex-wrap gap-2">
+                    {mangaDetail?.genres?.map((g) => (
                       <span
-                        key={genre.mal_id}
-                        className="rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 dark:bg-purple-500/20 dark:text-purple-300"
+                        key={g.mal_id}
+                        className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-purple-500/20 dark:text-indigo-200"
                       >
-                        {genre.name}
+                        {g.name}
                       </span>
                     ))}
                   </div>
 
-                  {/* Info cards */}
-                  <div className="mt-10 grid grid-cols-2 gap-4">
-                    <InfoBox
-                      title="Author"
-                      value={mangaDetail.authors?.map((a) => a.name).join(", ")}
-                    />
-                    <InfoBox title="Status" value={mangaDetail.status} />
-                    <InfoBox title="Chapters" value={mangaDetail.chapters} />
-                    <InfoBox title="Year" value={mangaDetail.year} />
+                  {/* INFO GRID */}
+
+                  <div className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/3">
+                    <div className="grid grid-cols-2 gap-5">
+                      <InfoBox title="Type" value={mangaDetail?.type} />
+
+                      <InfoBox title="Status" value={mangaDetail?.status} />
+
+                      <InfoBox
+                        title="Chapters"
+                        value={mangaDetail?.chapters ?? "N/A"}
+                      />
+
+                      <InfoBox
+                        title="Volumes"
+                        value={mangaDetail?.volumes ?? "N/A"}
+                      />
+
+                      <InfoBox
+                        title="Published"
+                        value={mangaDetail?.published?.string}
+                      />
+
+                      <InfoBox title="Members" value={mangaDetail?.members} />
+
+                      <InfoBox
+                        title="Authors"
+                        value={mangaDetail?.authors
+                          ?.map((a) => a.name)
+                          .join(", ")}
+                      />
+
+                      <InfoBox
+                        title="Serialization"
+                        value={mangaDetail?.serializations
+                          ?.map((s) => s.name)
+                          .join(", ")}
+                      />
+
+                      {/* بقیه موارد */}
+                    </div>
                   </div>
                 </div>
               </section>
 
-              {/* Synopsis */}
-              <section className="mt-16 rounded-3xl border border-slate-200 bg-indigo-50 p-8 shadow-sm dark:border-white/10 dark:bg-gray-900">
-                <h2 className="mb-5 text-2xl font-bold">Synopsis</h2>
+              {/* SYNOPSIS */}
+              <section className="xs:p-8 mt-14 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-gray-900">
+                <h2 className="mb-4 text-2xl font-bold">Synopsis</h2>
 
                 <p className="leading-8 text-slate-600 dark:text-gray-300">
-                  {mangaDetail.synopsis}
+                  {mangaDetail?.synopsis}
                 </p>
               </section>
+
+              {/* BACKGROUND */}
+              {mangaDetail?.background && (
+                <section className="xs:p-8 mt-10 rounded-3xl border border-slate-200 bg-indigo-50 p-4 dark:border-white/10 dark:bg-white/5">
+                  <h2 className="mb-4 text-2xl font-bold">Background</h2>
+
+                  <p className="leading-8 text-slate-600 dark:text-gray-300">
+                    {mangaDetail.background}
+                  </p>
+                </section>
+              )}
             </div>
           </main>
         )}
