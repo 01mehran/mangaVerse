@@ -9,6 +9,7 @@ import Container from "../components/Container";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import InfoBox from "../components/InfoBox";
+import ExpandableText from "../components/ExpandableText";
 
 export default function MangaDetails() {
   const mangaDetail = useLoaderData();
@@ -141,9 +142,7 @@ export default function MangaDetails() {
                   Synopsis
                 </h2>
 
-                <p className="leading-8 text-slate-600 dark:text-slate-300">
-                  {mangaDetail?.synopsis}
-                </p>
+                <ExpandableText text={mangaDetail?.synopsis} />
               </section>
 
               {mangaDetail?.background && (
@@ -152,9 +151,7 @@ export default function MangaDetails() {
                     Background
                   </h2>
 
-                  <p className="leading-8 text-slate-600 dark:text-slate-300">
-                    {mangaDetail.background}
-                  </p>
+                  <ExpandableText text={mangaDetail?.background} />
                 </section>
               )}
             </div>
