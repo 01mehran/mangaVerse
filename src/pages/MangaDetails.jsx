@@ -28,7 +28,7 @@ export default function MangaDetails() {
         {isLoading ? (
           <Spinner />
         ) : (
-          <main className="min-h-screen py-10 ">
+          <main className="min-h-screen py-10">
             <div className="mx-auto max-w-6xl">
               {/* TOP SECTION */}
               <section className="grid grid-cols-1 gap-10 md:grid-cols-[320px_1fr]">
@@ -113,39 +113,46 @@ export default function MangaDetails() {
 
                       <InfoBox
                         title="Authors"
-                        value={mangaDetail?.authors
-                          ?.map((a) => a.name)
-                          .join(", ")}
+                        value={
+                          mangaDetail?.authors?.length
+                            ? mangaDetail.authors.map((a) => a.name).join(", ")
+                            : "N/A"
+                        }
                       />
 
                       <InfoBox
                         title="Serialization"
-                        value={mangaDetail?.serializations
-                          ?.map((s) => s.name)
-                          .join(", ")}
+                        value={
+                          mangaDetail?.serializations?.length
+                            ? mangaDetail.serializations
+                                .map((s) => s.name)
+                                .join(", ")
+                            : "N/A"
+                        }
                       />
-
-                      {/* بقیه موارد */}
                     </div>
                   </div>
                 </div>
               </section>
 
               {/* SYNOPSIS */}
-              <section className="xs:p-8 mt-14 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-gray-900">
-                <h2 className="mb-4 text-2xl font-bold">Synopsis</h2>
+              <section className="xs:p-8 mt-14 rounded-3xl border border-slate-200 bg-white/70 p-4 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/3">
+                <h2 className="mb-4 text-2xl font-bold text-indigo-500 dark:text-purple-500">
+                  Synopsis
+                </h2>
 
-                <p className="leading-8 text-slate-600 dark:text-gray-300">
+                <p className="leading-8 text-slate-600 dark:text-slate-300">
                   {mangaDetail?.synopsis}
                 </p>
               </section>
 
-              {/* BACKGROUND */}
               {mangaDetail?.background && (
-                <section className="xs:p-8 mt-10 rounded-3xl border border-slate-200 bg-indigo-50 p-4 dark:border-white/10 dark:bg-white/5">
-                  <h2 className="mb-4 text-2xl font-bold">Background</h2>
+                <section className="xs:p-8 mt-10 rounded-3xl border border-slate-200 bg-white/70 p-4 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/3">
+                  <h2 className="mb-4 text-2xl font-bold text-indigo-500 dark:text-purple-500">
+                    Background
+                  </h2>
 
-                  <p className="leading-8 text-slate-600 dark:text-gray-300">
+                  <p className="leading-8 text-slate-600 dark:text-slate-300">
                     {mangaDetail.background}
                   </p>
                 </section>
