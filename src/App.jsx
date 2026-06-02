@@ -19,6 +19,7 @@ import Spinner from "./components/Spinner";
 // Services;
 import { mangasListLoader } from "./services/mangasList.loader";
 import { mangaDetailLoader } from "./services/mangaDetail.loader";
+import { mangaSearchLoader } from "./services/mangaSearch.loader";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
 
       {
         path: "/search",
-        loader: mangasListLoader,
+        loader: mangaSearchLoader,
 
         element: <SearchResult />,
         errorElement: <ErrorMessage />,

@@ -13,17 +13,13 @@ import BackButton from "../components/BackButton";
 
 export default function SearchResult() {
   const { mangas } = useLoaderData();
+
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
-  // Get the search query from the URL parameters;
+  // // Get the search query from the URL parameters;
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
-
-  // Filter mangas based on the search query;
-  const filteredMangas = mangas.filter((manga) =>
-    manga.title.toLowerCase().includes(query.toLowerCase()),
-  );
 
   return (
     <section className="min-h-screen bg-slate-100 py-12 dark:bg-gray-950">
@@ -36,7 +32,7 @@ export default function SearchResult() {
           {isLoading && <Spinner />}
 
           {/* Empty state */}
-          {!isLoading && filteredMangas.length === 0 && (
+          {!isLoading && mangas.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <span className="mb-3 text-5xl">⚠️</span>
               <h2 className="text-xl font-medium text-red-400">
@@ -46,7 +42,7 @@ export default function SearchResult() {
           )}
 
           {/* Results */}
-          {!isLoading && filteredMangas.length > 0 && (
+          {!isLoading && mangas.length > 0 && (
             <>
               {/* Search title */}
               <h1 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
@@ -57,7 +53,7 @@ export default function SearchResult() {
               </h1>
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {filteredMangas.map((manga) => (
+                {mangas.map((manga) => (
                   <MangaCard manga={manga} key={manga.mal_id} />
                 ))}
               </div>

@@ -16,7 +16,7 @@ export default function MangaCard({ manga }) {
 
           {/* Score */}
           <div className="absolute top-3 right-3 rounded-lg bg-black/70 px-2 py-1 text-sm font-medium text-yellow-300 backdrop-blur">
-            ⭐ {manga.score.toFixed(1) ?? "N/A"}
+            ⭐ {manga.score?.toFixed(1) ?? "N/A"}
           </div>
         </div>
 
@@ -32,7 +32,7 @@ export default function MangaCard({ manga }) {
             {manga.genres?.slice(0, 2).map((genre) => (
               <span
                 key={genre.mal_id}
-                className="rounded-full bg-indigo-400/20 px-2.5 py-1 text-xs font-medium text-indigo-600 dark:bg-purple-500/20 dark:text-purple-300"
+                className="rounded-full bg-indigo-400/20 px-1.5 py-1 text-xs font-medium text-indigo-600 dark:bg-purple-500/20 dark:text-purple-300"
               >
                 {genre.name}
               </span>
