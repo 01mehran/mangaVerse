@@ -12,7 +12,7 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 
 export default function SearchResult() {
-  const mangas = useLoaderData();
+  const { mangas } = useLoaderData();
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 

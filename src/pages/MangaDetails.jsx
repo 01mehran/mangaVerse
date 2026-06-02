@@ -17,6 +17,10 @@ export default function MangaDetails() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
 
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="min-h-screen bg-slate-100 py-12 text-slate-900 dark:bg-gray-950 dark:text-white">
       <Container>
