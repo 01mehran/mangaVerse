@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import InfoBox from "../components/InfoBox";
 import ExpandableText from "../components/ExpandableText";
+import InfoList from "../components/InfoList";
 
 export default function MangaDetails() {
   const mangaDetail = useLoaderData();
@@ -87,51 +88,9 @@ export default function MangaDetails() {
                     ))}
                   </div>
 
-                  {/* INFO GRID */}
-
                   <div className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/3">
-                    <div className="grid grid-cols-2 gap-5">
-                      <InfoBox title="Type" value={mangaDetail?.type} />
-
-                      <InfoBox title="Status" value={mangaDetail?.status} />
-
-                      <InfoBox
-                        title="Chapters"
-                        value={mangaDetail?.chapters ?? "N/A"}
-                      />
-
-                      <InfoBox
-                        title="Volumes"
-                        value={mangaDetail?.volumes ?? "N/A"}
-                      />
-
-                      <InfoBox
-                        title="Published"
-                        value={mangaDetail?.published?.string}
-                      />
-
-                      <InfoBox title="Members" value={mangaDetail?.members} />
-
-                      <InfoBox
-                        title="Authors"
-                        value={
-                          mangaDetail?.authors?.length
-                            ? mangaDetail.authors.map((a) => a.name).join(", ")
-                            : "N/A"
-                        }
-                      />
-
-                      <InfoBox
-                        title="Serialization"
-                        value={
-                          mangaDetail?.serializations?.length
-                            ? mangaDetail.serializations
-                                .map((s) => s.name)
-                                .join(", ")
-                            : "N/A"
-                        }
-                      />
-                    </div>
+                    {/* Manga Info List; */}
+                    <InfoList mangaDetail={mangaDetail} />
                   </div>
                 </div>
               </section>
