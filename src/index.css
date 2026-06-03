@@ -24,18 +24,24 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e2939;
+  background: #a3b3ff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #7032a1;
+  background: #4f39f6;
   border-radius: 2px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #8b36cf;
+.dark {
+  ::-webkit-scrollbar-track {
+    background: #1e2939;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #7032a1;
+  }
 }
