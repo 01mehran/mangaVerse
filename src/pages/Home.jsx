@@ -5,6 +5,7 @@ import { useLoaderData, useNavigation } from "react-router-dom";
 import MangasList from "../components/MangasList";
 import Spinner from "../components/Spinner";
 import Pagination from "../components/Pagination";
+import BackToTopBtn from "../components/BackToTopBtn";
 
 export default function Home() {
   const { mangas, pagination } = useLoaderData();
@@ -18,6 +19,8 @@ export default function Home() {
         {isLoading ? <Spinner /> : <MangasList mangas={mangas} />}
       </main>
       <Pagination pagination={pagination} />
+      
+      <BackToTopBtn />
     </section>
   );
 }
