@@ -10,8 +10,5 @@ export const mangaSearchLoader = async ({ request }) => {
     `https://api.jikan.moe/v4/manga?q=${query}&page=${page}&limit=24`,
   );
 
-  return {
-    mangas: response.data,
-    pagination: response.pagination,
-  };
+  return response.data;
 };

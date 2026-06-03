@@ -29,14 +29,18 @@ export default function MangaCard({ manga }) {
 
           {/* Genres */}
           <div className="flex flex-wrap gap-2">
-            {manga.genres?.slice(0, 2).map((genre) => (
-              <span
-                key={genre.mal_id}
-                className="rounded-full bg-indigo-400/20 px-1.5 py-1 text-xs font-medium text-indigo-600 dark:bg-purple-500/20 dark:text-purple-300"
-              >
-                {genre.name}
-              </span>
-            ))}
+            {manga.genres?.length ? (
+              manga.genres?.slice(0, 2).map((genre) => (
+                <span
+                  key={genre.mal_id}
+                  className="rounded-full bg-indigo-400/20 px-1.5 py-1 text-xs font-medium text-indigo-600 dark:bg-purple-500/20 dark:text-purple-300"
+                >
+                  {genre.name}
+                </span>
+              ))
+            ) : (
+              <span className="text-indigo-500 dark:text-purple-500">N/A</span>
+            )}
           </div>
 
           {/* Footer */}

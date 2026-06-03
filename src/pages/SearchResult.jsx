@@ -12,7 +12,7 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 
 export default function SearchResult() {
-  const { mangas } = useLoaderData();
+  const mangas = useLoaderData();
 
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -33,10 +33,13 @@ export default function SearchResult() {
 
           {/* Empty state */}
           {!isLoading && mangas.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
+            <div className="flex flex-col items-center justify-center text-center">
               <span className="mb-3 text-5xl">⚠️</span>
-              <h2 className="text-xl font-medium text-red-400">
-                Ooops, no manga found
+              <h2 className="dark: text-xl font-medium text-black/90 italic dark:text-white">
+                Ooops, no manga found for{" "}
+                <span className="text-xl text-indigo-600 dark:text-purple-500">
+                  "{query}"
+                </span>
               </h2>
             </div>
           )}
