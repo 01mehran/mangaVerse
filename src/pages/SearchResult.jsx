@@ -10,6 +10,7 @@ import Container from "../components/Container";
 import MangaCard from "../components/MangaCard";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
+import Pagination from "../components/Pagination";
 
 export default function SearchResult() {
   const mangas = useLoaderData();
@@ -48,12 +49,16 @@ export default function SearchResult() {
           {!isLoading && mangas.length > 0 && (
             <>
               {/* Search title */}
-              <h1 className="mb-4 text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="mb-8 text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
                 Search results for:
                 <span className="ml-3 text-indigo-600 dark:text-purple-400">
                   "{query}"
                 </span>
               </h1>
+
+              <p className="pb-2 text-sm text-white italic">
+                Found {mangas.length} manga
+              </p>
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {mangas.map((manga) => (
