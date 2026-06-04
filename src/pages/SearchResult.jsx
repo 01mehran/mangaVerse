@@ -13,7 +13,7 @@ import BackButton from "../components/BackButton";
 import Pagination from "../components/Pagination";
 
 export default function SearchResult() {
-  const mangas = useLoaderData();
+  const { mangas, pagination } = useLoaderData();
 
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
@@ -65,6 +65,8 @@ export default function SearchResult() {
                   <MangaCard manga={manga} key={manga.mal_id} />
                 ))}
               </div>
+
+              <Pagination pagination={pagination} />
             </>
           )}
         </main>
