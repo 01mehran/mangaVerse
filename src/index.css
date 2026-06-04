@@ -22,26 +22,12 @@ body {
   min-height: 100dvh;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #615fff #a3b3ff;
 }
 
-::-webkit-scrollbar-track {
-  background: #a3b3ff;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4f39f6;
-  border-radius: 2px;
-}
-
-.dark {
-  ::-webkit-scrollbar-track {
-    background: #1e2939;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #7032a1;
-  }
+html.dark {
+  scrollbar-color: #7032a1 #1e2939;
 }
