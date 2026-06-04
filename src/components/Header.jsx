@@ -14,9 +14,10 @@ import { useTheme } from "../contexts/ThemContext";
 
 // Components;
 import Container from "./Container";
+import Input from "./Input";
 
 // Icons;
-import { Search, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
 // Logo;
 import logo from "../assets/logo.png";
@@ -26,15 +27,7 @@ export default function Header() {
 
   const { handleToggleTheme } = useTheme();
 
-  const navigation = useNavigation();
-  const isLoading = navigation.state === "loading";
-
   const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    setSearchQuery("");
-  }, [location.pathname]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -60,24 +53,12 @@ export default function Header() {
             </article>
           </Link>
 
-          {/* Search (desktop) */}
-          <form
-            onSubmit={handleSearch}
-            className="hidden w-110 items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500 md:flex lg:w-150 dark:border-white/10 dark:bg-white/5 dark:focus-within:ring-purple-400"
-          >
-            <button className="cursor-pointer transition duration-300 hover:scale-105">
-              <Search size={18} className="text-slate-500 dark:text-gray-400" />
-            </button>
-
-            <input
-              type="text"
-              placeholder="Search manga..."
-              className={`${isLoading && "pointer-events-none opacity-80"} w-full bg-transparent px-2 text-sm text-slate-900 placeholder-slate-400 outline-none dark:text-white dark:placeholder-gray-500`}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              disabled={isLoading}
-            />
-          </form>
+          <Input
+            className="hidden w-110 md:flex lg:w-150"
+            onHandleSearch={handleSearch}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
 
           {/* Right Side */}
           <article className="flex items-center gap-px">
@@ -104,23 +85,12 @@ export default function Header() {
 
       {/* Mobile Search */}
       <Container>
-        <div className="pt-3 md:hidden">
-          <form
-            onSubmit={handleSearch}
-            className="flex items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-3 focus-within:ring-2 focus-within:ring-indigo-500 dark:border-white/10 dark:bg-white/5 dark:focus-within:ring-purple-400"
-          >
-            <Search size={18} className="text-slate-500 dark:text-gray-400" />
-
-            <input
-              type="text"
-              placeholder="Search manga..."
-              className={`${isLoading && "pointer-events-none opacity-80"} w-full bg-transparent px-2 text-sm text-slate-900 placeholder-slate-400 outline-none dark:text-white dark:placeholder-gray-500`}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              disabled={isLoading}
-            />
-          </form>
-        </div>
+        <Input
+          className="flex pt-3 md:hidden"
+          onHandleSearch={handleSearch}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
       </Container>
     </header>
   );
