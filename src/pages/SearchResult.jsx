@@ -11,6 +11,7 @@ import MangaCard from "../components/MangaCard";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import Pagination from "../components/Pagination";
+import BackToTopBtn from "../components/BackToTopBtn";
 
 export default function SearchResult() {
   const { mangas, pagination } = useLoaderData();
@@ -69,6 +70,8 @@ export default function SearchResult() {
               <Pagination pagination={pagination} />
             </>
           )}
+
+          <BackToTopBtn />
         </main>
       </Container>
     </section>
