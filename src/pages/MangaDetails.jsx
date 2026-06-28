@@ -34,7 +34,7 @@ export default function MangaDetails() {
               {/* TOP SECTION */}
               <section className="grid grid-cols-1 gap-10 md:grid-cols-[320px_1fr]">
                 {/* COVER */}
-                <div className="aspect-3/4 w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl transition hover:scale-[1.02] md:sticky md:top-34 dark:border-white/10 dark:shadow-2xl">
+                <div className="border-border dark:border-border-dark aspect-3/4 w-full overflow-hidden rounded-3xl border shadow-lg transition hover:scale-[1.02] md:sticky md:top-34 dark:shadow-xl">
                   <img
                     src={mangaDetail?.images?.jpg?.image_url}
                     alt={`Cover of ${mangaDetail?.title}`}
@@ -58,19 +58,19 @@ export default function MangaDetails() {
 
                   {/* SCORE + STATS */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <div className="rounded-xl bg-yellow-100 px-4 py-2 font-semibold text-yellow-700 dark:bg-yellow-400/10 dark:text-yellow-300">
+                    <div className="bg-warning-light text-warning-dark dark:bg-warning-dark-bg dark:text-warning-dark rounded-xl px-4 py-2 font-semibold">
                       ⭐ {mangaDetail.score?.toFixed(2) ?? "N/A"}
                     </div>
 
-                    <div className="rounded-xl bg-purple-100 px-4 py-2 font-semibold text-purple-700 dark:bg-purple-500/10 dark:text-purple-300">
+                    <div className="bg-secondary-light text-secondary dark:bg-secondary-bg-dark dark:text-secondary-dark rounded-xl px-4 py-2 font-semibold">
                       Rank #{mangaDetail?.rank}
                     </div>
 
-                    <div className="rounded-xl bg-orange-500/10 px-4 py-2 text-sm font-semibold text-orange-400/90 dark:bg-orange-500/20">
+                    <div className="bg-info-bg text-info-text dark:bg-info-bg-hover rounded-xl px-4 py-2 text-sm font-semibold">
                       Popularity #{mangaDetail?.popularity}
                     </div>
 
-                    <div className="rounded-xl bg-green-500/20 px-4 py-2 text-sm font-semibold text-slate-600 dark:bg-green-500/20 dark:text-white/80">
+                    <div className="bg-success-bg text-text-muted dark:bg-success-bg dark:text-text-secondary-dark rounded-xl px-4 py-2 text-sm font-semibold">
                       Favorites {mangaDetail?.favorites}
                     </div>
                   </div>

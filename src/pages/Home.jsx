@@ -15,11 +15,11 @@ export default function Home() {
 
   return (
     <section>
-      <main className="min-h-screen bg-slate-100 dark:bg-gray-950">
+      <main className="bg-bg dark:bg-bg-dark min-h-screen">
         {isLoading ? <Spinner /> : <MangasList mangas={mangas} />}
       </main>
       <Pagination pagination={pagination} />
-      
+
       <BackToTopBtn />
     </section>
   );

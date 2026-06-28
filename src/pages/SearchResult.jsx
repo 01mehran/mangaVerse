@@ -24,7 +24,7 @@ export default function SearchResult() {
   const query = searchParams.get("q") || "";
 
   return (
-    <section className="min-h-screen bg-slate-100 py-12 dark:bg-gray-950">
+    <section className="bg-bg dark:bg-bg-dark min-h-screen py-12">
       <Container>
         {/* Back button */}
         <BackButton />
@@ -39,7 +39,7 @@ export default function SearchResult() {
               <span className="mb-3 text-5xl">⚠️</span>
               <h2 className="dark: text-xl font-medium text-black/90 italic dark:text-white">
                 Ooops, no manga found for{" "}
-                <span className="text-xl text-indigo-600 dark:text-purple-500">
+                <span className="text-primary dark:text-primary-dark text-xl">
                   "{query}"
                 </span>
               </h2>
@@ -50,9 +50,9 @@ export default function SearchResult() {
           {!isLoading && mangas.length > 0 && (
             <>
               {/* Search title */}
-              <h1 className="mb-8 text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-text dark:text-text-dark mb-8 text-xl font-bold md:text-2xl">
                 Search results for:
-                <span className="ml-3 text-indigo-600 dark:text-purple-400">
+                <span className="text-primary dark:text-primary-dark-light ml-3">
                   "{query}"
                 </span>
               </h1>
