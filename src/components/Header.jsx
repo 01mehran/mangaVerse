@@ -40,16 +40,14 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 py-4 text-slate-900 backdrop-blur-lg dark:border-white/10 dark:bg-gray-950/95 dark:text-white">
+    <header className="dark:bg-surface-light-dark/95 border-border bg-surface/80 text-text dark:border-border-dark dark:text-text-dark sticky top-0 z-50 w-full border-b py-4 backdrop-blur-lg">
       <Container>
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/">
             <article className="text-xl font-bold tracking-wide">
-              <span className="text-slate-900 dark:text-white">manga</span>
-              <span className="text-indigo-600 dark:text-purple-500">
-                Verse
-              </span>
+              <span className="text-text dark:text-text-dark">manga</span>
+              <span className="text-primary dark:text-primary-dark">Verse</span>
             </article>
           </Link>
 

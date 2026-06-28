@@ -11,26 +11,26 @@ export default function ErrorMessage() {
   const isLoading = state === "loading";
 
   return (
-    <div className="flex h-screen flex-col items-center bg-slate-100 pt-24 dark:bg-gray-950">
-      <div className="mb-3 text-5xl text-red-500">⚠️</div>
+    <div className="bg-bg dark:bg-bg-dark flex h-screen flex-col items-center pt-24">
+      <div className="text-danger mb-3 text-5xl">⚠️</div>
 
-      <h2 className="text-xl font-semibold dark:text-white">
+      <h2 className="dark:text-text-dark text-xl font-semibold">
         Failed to load manga
       </h2>
 
-      <p className="mt-2 font-medium text-red-400">
+      <p className="text-danger mt-2 font-medium">
         {error.message || error.status}
       </p>
 
       {isLoading ? (
         <>
-          <p className="fixed inset-0 z-10 h-full w-full bg-indigo-500/10 dark:bg-purple-700/10"></p>
+          <p className="bg-overlay-primary-light dark:bg-overlay-primary-dark fixed inset-0 z-10 h-full w-full"></p>
           <Spinner />
         </>
       ) : (
         <button
           onClick={() => revalidate()}
-          className="mt-2 cursor-pointer rounded-lg border border-indigo-600/30 bg-indigo-700/10 p-1 px-6 text-indigo-500 dark:border-purple-500/20 dark:bg-purple-500/10 dark:text-purple-500"
+          className="border-primary/30 bg-primary/10 text-primary dark:border-primary-dark/20 dark:bg-primary-dark/10 dark:text-primary-dark mt-2 cursor-pointer rounded-lg border p-1 px-6"
         >
           Refresh
         </button>

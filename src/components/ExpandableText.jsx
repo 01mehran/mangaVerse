@@ -14,14 +14,14 @@ export default function ExpandableText({ text }) {
 
   return (
     <div>
-      <p className="leading-8 text-slate-600 dark:text-slate-300">
+      <p className="text-text-tertiary dark:text-text-secondary-dark leading-8">
         {displayedText}
       </p>
 
       {isLong && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-3 cursor-pointer text-xs font-medium text-indigo-600 transition hover:opacity-80 dark:text-purple-500"
+          className="text-primary dark:text-primary-dark mt-3 cursor-pointer text-xs font-medium transition hover:opacity-80"
         >
           {isExpanded ? "Show Less" : "Read More"}
         </button>

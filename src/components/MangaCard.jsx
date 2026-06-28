@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 export default function MangaCard({ manga }) {
   return (
     <Link to={`/manga/${manga.mal_id}`}>
-      <article className="group cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-white/10 dark:bg-gray-900">
+      <article className="group border-border bg-surface dark:border-border-dark dark:bg-surface-dark cursor-pointer overflow-hidden rounded-2xl border shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
         {/* Cover */}
         <div className="relative aspect-3/4 overflow-hidden">
           <img
-            src={manga.images.jpg.image_url}
+            src={manga?.images?.jpg?.image_url}
             alt={`Cover of ${manga.title}`}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
 
           {/* Score */}
-          <div className="absolute top-3 right-3 rounded-lg bg-black/70 px-2 py-1 text-sm font-medium text-yellow-300 backdrop-blur">
+          <div className="bg-overlay-dark text-warning-dark absolute top-3 right-3 rounded-lg px-2 py-1 text-sm font-medium backdrop-blur">
             ⭐ {manga.score?.toFixed(1) ?? "N/A"}
           </div>
         </div>
@@ -23,8 +23,8 @@ export default function MangaCard({ manga }) {
         {/* Content */}
         <div className="space-y-3 p-4">
           {/* Title */}
-          <h3 className="line-clamp-1 text-lg font-bold text-slate-900 dark:text-white">
-            {manga.title}
+          <h3 className="text-text dark:text-text-dark line-clamp-1 text-lg font-bold">
+            {manga?.title}
           </h3>
 
           {/* Genres */}
@@ -33,19 +33,19 @@ export default function MangaCard({ manga }) {
               manga.genres?.slice(0, 2).map((genre) => (
                 <span
                   key={genre.mal_id}
-                  className="rounded-full bg-indigo-400/20 px-1.5 py-1 text-xs font-medium text-indigo-600 dark:bg-purple-500/20 dark:text-purple-300"
+                  className="bg-primary-bg text-primary dark:bg-primary-dark-bg dark:text-primary-dark-light rounded-full px-1.5 py-1 text-xs font-medium"
                 >
                   {genre.name}
                 </span>
               ))
             ) : (
-              <span className="text-indigo-500 dark:text-purple-500">N/A</span>
+              <span className="text-primary dark:text-primary-dark">N/A</span>
             )}
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between border-t border-slate-200 pt-3 dark:border-white/10">
-            <span className="text-sm text-slate-500 dark:text-gray-400">
+          <div className="border-border dark:border-border-dark flex items-center justify-between border-t pt-3">
+            <span className="text-text-muted dark:text-text-muted-dark text-sm">
               {manga.status}
             </span>
 
